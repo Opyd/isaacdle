@@ -1,11 +1,17 @@
 import items from '/public/items.json';
-import {Avatar, Button} from "@nextui-org/react";
 import { FixedSizeList as List } from 'react-window';
 import {useState} from "react";
+import SuggestedListItem from './SuggestedListItem'
 
-export default function SuggestedItemsList() {
+export default function SuggestedItemsList({ queryString }) {
 
 	const [selectedOption, setSelectedOption] = useState(null);
+
+	let filteredItems = items;
+
+	if (queryString !== '') {
+		filteredItems = filteredItems.filter(item => item.title.toLowerCase().includes(queryString.toLowerCase()));
+	}
 
 	const handleSelect = (option) => {
 		setSelectedOption(option);
@@ -14,24 +20,7 @@ export default function SuggestedItemsList() {
 
 	const Option = ({ index, style }) => (
 		<div style={style}>
-			<Button key={items[index].itemId} className="flex items-center justify-start w-[400px] text-left gap-2">
-				{items[index].img === undefined ? (
-					<Avatar
-						name="?"
-						size="md"
-					/>
-				) : (
-					<Avatar
-						alt={items[index].title}
-						className="flex-shrink-0"
-						size="md"
-						src={`/items/${items[index].itemId}.png`}
-					/>
-				)}
-				<div className="flex flex-col">
-					<span>{items[index].title}</span>
-				</div>
-			</Button>
+			<SuggestedListItem item={filteredItems[index]} />
 		</div>
 	);
 
@@ -40,7 +29,7 @@ export default function SuggestedItemsList() {
 			{selectedOption?.title}
 			<List
 				height={300}
-				itemCount={items.length}
+				itemCount={filteredItems.length}
 				itemSize={50}
 				width={420}
 				style={{ overflowX: 'hidden', scrollbarWidth: 'thin', scrollbarColor: 'darkgray lightgray' }}
