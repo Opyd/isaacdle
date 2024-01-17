@@ -3,7 +3,7 @@ import { FixedSizeList as List } from 'react-window';
 import {useState} from "react";
 import SuggestedListItem from './SuggestedListItem'
 
-export default function SuggestedItemsList({ queryString }) {
+export default function SuggestedItemsList({ queryString, setGuess }) {
 
 	const [selectedOption, setSelectedOption] = useState(null);
 
@@ -15,18 +15,18 @@ export default function SuggestedItemsList({ queryString }) {
 
 	const handleSelect = (option) => {
 		setSelectedOption(option);
+		setGuess(option);
 	};
 
 
 	const Option = ({ index, style }) => (
 		<div style={style}>
-			<SuggestedListItem item={filteredItems[index]} />
+			<SuggestedListItem clickedItem={() => {handleSelect(filteredItems[index])}} item={filteredItems[index]} />
 		</div>
 	);
 
 	return (
 		<>
-			{selectedOption?.title}
 			<List
 				height={300}
 				itemCount={filteredItems.length}

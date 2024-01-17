@@ -10,7 +10,9 @@ export default function Home() {
 
   const [item, setItem] = useState({});
   const [isStarted, setIsStarted] = useState(false);
-  const [itemGuessed, setItemGuessed] = useState(false)
+  const [itemGuessed, setItemGuessed] = useState(false);
+  const [currentGuess, setCurrentGuess] = useState(false);
+  const [queryStr, setQueryStr] = useState('');
 
 
   return (
@@ -28,11 +30,15 @@ export default function Home() {
           </div>
         ) : (
           <div className="container flex flex-col items-center">
-            <div className="flex justify-center mt-[100px]">
-              <Item itemGuessed={itemGuessed}/>
+            <div className="flex relative flex-col gap-y-2 justify-center mt-[100px]">
+              <Button className="absolute -right-12 top-0" onClick={() => setCurrentGuess(false)} variant="ghost" radius="full" isIconOnly>↺</Button>
+              <Item item={currentGuess}/>
+              <Button isDisabled={!currentGuess} color="secondary" variant="shadow" size="lg">
+                Guess
+              </Button>
             </div>
             <div className="mt-10 flex w-[420px]">
-              <GuessInput/>
+              <GuessInput setGuessedItem={setCurrentGuess} handleChange={setQueryStr}/>
             </div>
           </div>
         )}
