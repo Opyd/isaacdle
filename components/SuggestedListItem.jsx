@@ -1,7 +1,7 @@
 import {Avatar, Button} from "@nextui-org/react";
 
 
-export default function SuggestedListItem({item, clickedItem}) {
+export default function SuggestedListItem({ item, clickedItem }) {
 	return (
 		<Button key={item.itemId} onClick={clickedItem} className="flex items-center justify-start w-[400px] text-left gap-2">
 			{item.img === undefined ? (

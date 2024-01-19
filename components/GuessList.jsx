@@ -1,7 +1,8 @@
 import {Card, CardBody, CardHeader, Divider} from "@nextui-org/react";
+import InvalidGuessItem from "@/components/InvalidGuessItem";
 
 
-export default function GuessList() {
+export default function GuessList({ invalidGuesses, targetItem }) {
 
 
 
@@ -14,8 +15,12 @@ export default function GuessList() {
 					Guesses
 				</CardHeader>
 				<Divider />
-				<CardBody className="text-center">
-					<i>No guesses yet.</i>
+				<CardBody className="text-center flex flex-col-reverse gap-y-2">
+					{invalidGuesses.length === 0 ? (
+						<i>No guesses yet.</i>
+					) : invalidGuesses.map(item => {return (
+						<InvalidGuessItem key={item.itemId} targetItem={targetItem} guessItem={item} />
+					)})}
 				</CardBody>
 			</Card>
 		</>
