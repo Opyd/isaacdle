@@ -1,14 +1,13 @@
 import {Button, Input} from "@nextui-org/react";
 import SuggestedItemsList from "@/components/SuggestedItemsList";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 
-export default function GuessInput({ handleChange, setGuessedItem }) {
+export default function GuessInput({ setGuessedItem }) {
 
 	const [queryStr, setQueryStr] = useState('');
 
 	function changeQueryStr(value) {
 		setQueryStr(value);
-		handleChange(value)
 	}
 
 	function setGuess(item) {

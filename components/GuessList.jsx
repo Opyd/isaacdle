@@ -4,10 +4,6 @@ import InvalidGuessItem from "@/components/InvalidGuessItem";
 
 export default function GuessList({ invalidGuesses, targetItem }) {
 
-
-
-
-
 	return (
 		<>
 			<Card>
@@ -17,7 +13,7 @@ export default function GuessList({ invalidGuesses, targetItem }) {
 				<Divider />
 				<CardBody className="text-center flex flex-col-reverse gap-y-2">
 					{invalidGuesses.length === 0 ? (
-						<i>No guesses yet.</i>
+						<i className="text-gray-400">No guesses yet.</i>
 					) : invalidGuesses.map(item => {return (
 						<InvalidGuessItem key={item.itemId} targetItem={targetItem} guessItem={item} />
 					)})}

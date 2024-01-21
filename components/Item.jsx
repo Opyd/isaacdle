@@ -11,7 +11,7 @@ export default function Item({ item }) {
 				className="border-none"
 				isFooterBlurred
 			>
-				{item ? (
+				{item && item?.img ? (
 						<Image width={200} height={200} src={`/items/${item.itemId}.png`} alt={item.title} />
 				) : (
 					<p className="text-8xl w-[200px] h-[200px] blur-md text-center p-8">
