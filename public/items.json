@@ -5518,7 +5518,8 @@
     "itemPool": [
       "None (Angel statue only)"
     ],
-    "recharge": false
+    "recharge": false,
+    "img" : "https://static.wikia.nocookie.net/bindingofisaacre_gamepedia/images/8/89/Collectible_Key_Piece_1_icon.png"
   },
   {
     "set": "rebirth",
@@ -5530,7 +5531,8 @@
     "itemPool": [
       "None (Angel statue only)"
     ],
-    "recharge": false
+    "recharge": false,
+    "img" : "https://static.wikia.nocookie.net/bindingofisaacre_gamepedia/images/5/55/Collectible_Key_Piece_2_icon.png"
   },
   {
     "set": "rebirth",

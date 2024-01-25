@@ -2,7 +2,7 @@
 
 import React, {useState} from 'react';
 import GuessList from "@/components/GuessList";
-import {Button, useDisclosure} from "@nextui-org/react";
+import {Button, Link, useDisclosure} from "@nextui-org/react";
 import PlayIcon from "@/components/PlayIcon";
 import Item from "@/components/Item";
 import GuessInput from "@/components/GuessInput";
@@ -17,6 +17,7 @@ function App() {
 	const [itemGuessed, setItemGuessed] = useState(false);
 	const [currentGuess, setCurrentGuess] = useState(false);
 	const [invalidGuessList, setInvalidGuessList] = useState([]);
+	const [searchPhrase, setSearchPhrase] = useState('');
 	const {isOpen, onOpen, onClose} = useDisclosure();
 
 	const jsConfetti = new JSConfetti();
@@ -41,16 +42,21 @@ function App() {
 		await jsConfetti.addConfetti();
 	}
 
+	const handlePhraseChange = (phrase) => {
+		setSearchPhrase(phrase);
+	}
+
 	const restartGame = () => {
 		setInvalidGuessList([]);
 		setItemGuessed(false);
 		setCurrentGuess(false);
+		setSearchPhrase('');
 		startGame();
 	}
 
 	return (
 		<div className="pt-10 grid grid-cols-12">
-			<div className=" lg:col-start-1 lg:col-span-3 lg:ml-5">
+			<div className="hidden lg:block lg:col-start-1 lg:col-span-3 lg:ml-5">
 				{isStarted ? (
 					<GuessList targetItem={item} invalidGuesses={invalidGuessList}/>
 				) : null}
@@ -59,11 +65,26 @@ function App() {
 				<h1 className="text-center text-4xl font-extrabold tracking-tight lg:text-5xl">
 					Isaac Wordle
 				</h1>
-				<h2 className="text-center mt-10">Check your The Binding of Isaac items knowledge!</h2>
+				<h2 className="text-center mt-10">
+					<span>
+						Check your
+					<Link
+						isExternal
+						href="https://store.steampowered.com/app/250900/The_Binding_of_Isaac_Rebirth/"
+						showAnchorIcon
+						underline="hover"
+						color="foreground"
+					>
+						The Binding of Isaac
+					</Link>
+					items knowledge!
+					</span>
+				</h2>
 				{!isStarted ? (
 					<>
 						<div className="flex justify-center mt-[200px]">
-							<Button isIconOnly variant="shadow" color="secondary" className="w-[120px] h-[120px] animate-pulse" onClick={startGame}
+							<Button isIconOnly variant="shadow" color="secondary" className="w-[120px] h-[120px] animate-pulse"
+							        onClick={startGame}
 							        aria-label="Start the game">
 								<PlayIcon/>
 							</Button>
@@ -82,7 +103,8 @@ function App() {
 							</Button>
 						</div>
 						<div className="mt-10 flex w-[420px]">
-							<GuessInput setGuessedItem={setCurrentGuess}/>
+							<GuessInput searchPhrase={searchPhrase} onPhraseChange={handlePhraseChange}
+							            setGuessedItem={setCurrentGuess}/>
 						</div>
 					</div>
 				)}
