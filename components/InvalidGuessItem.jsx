@@ -1,4 +1,5 @@
 import {Avatar, Chip} from "@nextui-org/react";
+import Image from "next/image";
 
 function arrayEquals(a, b) {
 	return Array.isArray(a) &&
@@ -18,17 +19,29 @@ const setNames = {
 }
 
 const poolIcons = {
-	'shop' : '🛒',
-	'greed mode shop' : '🪙',
-	'boss room' : '💀',
-	'gold/stone chest' : '🧰',
-	'item room' : '👑',
-	'angel room' : '👼',
-	'devil room' : '👿',
-	'secret room' : '❓',
-	'challenge room' : '⭐',
-	'crane game': '🎰',
-	'library' : '📚'
+	'shop' : 'shop.png',
+	'greed mode shop' : 'shop.png',
+	'boss room' : 'boss-room.png',
+	'greed mode item room' : 'treasure-room.png',
+	'gold/stone chest' : 'gold-stone-chest.webp',
+	'item room' : 'treasure-room.png',
+	'angel room' : 'angel-room.png',
+	'devil room' : 'devil-room.png',
+	'secret room' : 'secret-room.webp',
+	'challenge room' : 'boss-rush.png',
+	'crane game': 'crane-game.png',
+	'library' : 'library.png',
+	'battery beggar': 'battery_bum.png',
+	'bomb beggar' : 'battery_bum.png',
+	'curse room' : 'curse-room.webp',
+	'key beggar' : 'key_beggar.webp',
+	'old chest' : 'old_chest.png',
+	'planetarium' : 'planetarium.png',
+	'red chest' : 'red_chest.webp',
+	'rotten beggar' : 'rotten-beggar.png',
+	'none (arcade shell game only)' : 'shell-game.png',
+	'ultra secret room' : 'ultra-secret-room.png',
+	'wooden chest' : 'wooden-chest.png'
 }
 
 export default function InvalidGuessItem({ guessItem, targetItem }) {
@@ -73,7 +86,7 @@ export default function InvalidGuessItem({ guessItem, targetItem }) {
 					{guessItem.itemPool.map(pool => {
 						return (
 						<div className="bg-[#3f3f46] border-white/20 rounded-[5px]" key={pool}>
-							<p>{poolIcons[pool.toLowerCase()] ?? pool.split(' ')[0]}</p>
+							<Image src={`/pools/${poolIcons[pool.toLowerCase()]}`} width={20} height={20} className="w-[20px] h-[20px]" alt={pool} />
 						</div>
 					)
 					})}
