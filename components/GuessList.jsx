@@ -13,7 +13,7 @@ export default function GuessList({ invalidGuesses, targetItem }) {
 					Guesses ({reversedGuesses.length})
 				</CardHeader>
 				<Divider />
-				<CardBody className="text-center max-h-[80dvh] overflow-y-auto">
+				<CardBody className="text-center max-h-[40dvh] overflow-y-auto xl:max-h-[80dvh]">
 					<div className="flex flex-col-reverse gap-y-2">
 						{reversedGuesses.length === 0 ? (
 							<i className="text-gray-400">No guesses yet.</i>

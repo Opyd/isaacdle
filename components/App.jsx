@@ -22,6 +22,8 @@ function App() {
 
 	const jsConfetti = new JSConfetti();
 
+	const isSmallScreen = window.innerWidth < 1280;
+
 	const startGame = () => {
 		setIsStarted(true);
 		setItem(getRandomItem);
@@ -35,6 +37,7 @@ function App() {
 		setInvalidGuessList([...invalidGuessList, currentGuess]);
 		if (currentGuess.itemId !== item.itemId) {
 			setCurrentGuess(false);
+			setSearchPhrase('');
 			return;
 		}
 		setItemGuessed(true);
@@ -56,28 +59,28 @@ function App() {
 
 	return (
 		<div className="pt-10 grid grid-cols-12">
-			<div className="hidden lg:block lg:col-start-1 lg:col-span-3 lg:ml-5">
+			<div className="hidden xl:block xl:col-start-1 xl:col-span-3 xl:ml-5">
 				{isStarted ? (
 					<GuessList targetItem={item} invalidGuesses={invalidGuessList}/>
 				) : null}
 			</div>
-			<div className="col-start-0 col-span-12 lg:col-start-5 lg:col-span-4">
-				<h1 className="text-center text-4xl font-extrabold tracking-tight lg:text-5xl">
+			<div className="col-start-0 col-span-12 xl:col-start-5 xl:col-span-4">
+				<h1 className="text-center text-4xl font-extrabold tracking-tight xl:text-5xl">
 					Isaac Wordle
 				</h1>
 				<h2 className="text-center mt-10">
 					<span>
-						Check your
-					<Link
-						isExternal
-						href="https://store.steampowered.com/app/250900/The_Binding_of_Isaac_Rebirth/"
-						showAnchorIcon
-						underline="hover"
-						color="foreground"
-					>
-						The Binding of Isaac
-					</Link>
-					items knowledge!
+						<span className="pr-1">Check your</span>
+						<Link
+							isExternal
+							href="https://store.steampowered.com/app/250900/The_Binding_of_Isaac_Rebirth/"
+							showAnchorIcon
+							underline="hover"
+							color="foreground"
+						>
+							The Binding of Isaac
+						</Link>
+						items knowledge!
 					</span>
 				</h2>
 				{!isStarted ? (
@@ -102,13 +105,16 @@ function App() {
 								{itemGuessed ? 'Play again' : 'Guess'}
 							</Button>
 						</div>
-						<div className="mt-10 flex w-[420px]">
-							<GuessInput searchPhrase={searchPhrase} onPhraseChange={handlePhraseChange}
+						<div className="mt-10 flex w-[420px] flex-col gap-y-10">
+							<GuessInput isSmallScreen={isSmallScreen} searchPhrase={searchPhrase} onPhraseChange={handlePhraseChange}
 							            setGuessedItem={setCurrentGuess}/>
+							{ isSmallScreen && searchPhrase.length === 0 && (
+								<GuessList targetItem={item} invalidGuesses={invalidGuessList}/>
+							) }
 						</div>
 					</div>
 				)}
-				{itemGuessed ? (
+				{ itemGuessed ? (
 					<WinModal onClose={onClose} isOpen={isOpen} item={item} restartGame={restartGame}
 					          guessCount={invalidGuessList.length}/>
 				) : null}
