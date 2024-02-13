@@ -26,7 +26,6 @@
 }
 body {
     height: 100dvh;
-    overflow: hidden;
     background: rgb(2,0,36);
     background: linear-gradient(25deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 52%, rgba(13,9,124,1) 53%, rgba(2,0,36,1) 100%);
 }
