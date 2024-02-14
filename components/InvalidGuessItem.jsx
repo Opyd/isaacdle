@@ -41,7 +41,8 @@ const poolIcons = {
 	'rotten beggar' : 'rotten-beggar.png',
 	'none (arcade shell game only)' : 'shell-game.png',
 	'ultra secret room' : 'ultra-secret-room.png',
-	'wooden chest' : 'wooden-chest.png'
+	'wooden chest' : 'wooden-chest.png',
+	'mom\'s chest' : 'moms-chest.webp'
 }
 
 export default function InvalidGuessItem({ guessItem, targetItem }) {
@@ -59,11 +60,11 @@ export default function InvalidGuessItem({ guessItem, targetItem }) {
 	return (
 		<div className="px-2 py-4 border rounded-[10px] border-white/20">
 			<div className="grid grid-cols-5 pb-2 gap-x-2 items-center">
-				<p className="text-ellipsis break-all line-clamp-1">{guessItem.title}</p>
-				<Chip classNames={{content: 'w-[100px]'}}>Set</Chip>
-				<Chip classNames={{content: 'w-[100px]'}}>Type</Chip>
-				<Chip classNames={{content: 'w-[100px]'}}>Quality</Chip>
-				<Chip classNames={{content: 'w-[100px]'}}>Pool</Chip>
+				<p className="text-ellipsis break-all text-xs line-clamp-1">{guessItem.title}</p>
+				<Chip classNames={{content: 'w-[100px] break-all line-clamp-1 text-xs xl:text-base'}}>Set</Chip>
+				<Chip classNames={{content: 'w-[100px] break-all line-clamp-1 text-xs xl:text-base'}}>Type</Chip>
+				<Chip classNames={{content: 'w-[100px] break-all line-clamp-1 text-xs xl:text-base'}}>Quality</Chip>
+				<Chip classNames={{content: 'w-[100px] break-all line-clamp-1 text-xs xl:text-base'}}>Pool</Chip>
 			</div>
 			<div className="grid grid-cols-5 gap-x-2 items-center">
 				<div className='w-full flex items-center justify-center'>

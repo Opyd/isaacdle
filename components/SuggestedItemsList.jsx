@@ -16,7 +16,7 @@ export default function SuggestedItemsList({ queryString, setGuess }) {
 	const handleSelect = (option) => {
 		setSelectedOption(option);
 		setGuess(option);
-	};
+	}
 
 
 	const Option = ({ index, style }) => (
@@ -31,7 +31,6 @@ export default function SuggestedItemsList({ queryString, setGuess }) {
 				height={300}
 				itemCount={filteredItems.length}
 				itemSize={50}
-				width={420}
 				style={{ overflowX: 'hidden', scrollbarWidth: 'thin', scrollbarColor: 'darkgray lightgray' }}
 			>
 				{Option}

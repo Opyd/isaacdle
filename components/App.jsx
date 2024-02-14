@@ -105,7 +105,7 @@ function App() {
 								{itemGuessed ? 'Play again' : 'Guess'}
 							</Button>
 						</div>
-						<div className="mt-10 px-2 flex w-[420px] flex-col gap-y-10">
+						<div className="mt-10 px-2 flex w-full max-w-[420px] flex-col gap-y-10">
 							<GuessInput isSmallScreen={isSmallScreen} searchPhrase={searchPhrase} onPhraseChange={handlePhraseChange}
 							            setGuessedItem={setCurrentGuess}/>
 							{ isSmallScreen && searchPhrase.length === 0 && (
