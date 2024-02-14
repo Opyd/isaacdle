@@ -3,7 +3,7 @@
 import React, {useState} from 'react';
 import GuessList from "@/components/GuessList";
 import {Button, Link, useDisclosure} from "@nextui-org/react";
-import PlayIcon from "@/components/PlayIcon";
+import PlayButton from "@/components/PlayButton";
 import Item from "@/components/Item";
 import GuessInput from "@/components/GuessInput";
 import WinModal from "@/components/WinModal";
@@ -68,7 +68,7 @@ function App() {
 				<h1 className="text-center text-4xl font-extrabold tracking-tight xl:text-5xl">
 					Isaac Wordle
 				</h1>
-				<h2 className="text-center mt-10">
+				<h2 className="text-center mt-10 pl-2">
 					<span>
 						<span className="pr-1">Check your</span>
 						<Link
@@ -86,11 +86,8 @@ function App() {
 				{!isStarted ? (
 					<>
 						<div className="flex justify-center mt-[200px]">
-							<Button isIconOnly variant="shadow" color="secondary" className="w-[120px] h-[120px] animate-pulse"
-							        onClick={startGame}
-							        aria-label="Start the game">
-								<PlayIcon/>
-							</Button>
+							<PlayButton onClick={startGame}
+							            aria-label="Start the game" />
 						</div>
 					</>
 				) : (

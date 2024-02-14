@@ -32,6 +32,7 @@ const poolIcons = {
 	'crane game': 'crane-game.png',
 	'library' : 'library.png',
 	'battery beggar': 'battery_bum.png',
+	'demon beggar' : 'devil_beggar.webp',
 	'bomb beggar' : 'battery_bum.png',
 	'curse room' : 'curse-room.webp',
 	'key beggar' : 'key_beggar.webp',
@@ -83,11 +84,11 @@ export default function InvalidGuessItem({ guessItem, targetItem }) {
 					{guessItem.quality}
 				</div>
 				<div
-					className={`w-full  text-sm h-[50px] rounded-[10px] flex flex-wrap gap-x-1 gap-y-1 items-center justify-center ${poolMatches ? 'bg-green-600' : poolPartialMatches ? 'bg-amber-400' : 'bg-red-600'}`}>
+					className={`w-full text-sm rounded-[10px] flex flex-wrap gap-x-1 gap-y-1 items-center justify-center h-[50px] ${poolMatches ? 'bg-green-600' : poolPartialMatches ? 'bg-amber-400' : 'bg-red-600'}`}>
 					{guessItem.itemPool.map(pool => {
 						return (
 						<div className="bg-[#3f3f46] border-white/20 rounded-[5px]" key={pool}>
-							<Image src={`/pools/${poolIcons[pool.toLowerCase()]}`} width={20} height={20} className="w-[20px] h-[20px]" alt={pool} />
+							<Image src={`/pools/${poolIcons[pool.toLowerCase()]}`} width={20} height={20} className="w-[15px] h-[15px]  xl:w-[20px] xl:h-[20px]" alt={pool} />
 						</div>
 					)
 					})}
