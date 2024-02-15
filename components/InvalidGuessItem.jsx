@@ -24,6 +24,7 @@ const poolIcons = {
 	'boss room' : 'boss-room.png',
 	'greed mode item room' : 'treasure-room.png',
 	'gold/stone chest' : 'gold-stone-chest.webp',
+	'gold chest' : 'gold-stone-chest.webp',
 	'item room' : 'treasure-room.png',
 	'angel room' : 'angel-room.png',
 	'devil room' : 'devil-room.png',
