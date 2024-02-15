@@ -17,9 +17,9 @@ export default function RootLayout({ children }) {
       <title>Isaacdle - TBOI Wordle</title>
     </head>
     <body>
-    <Providers>
-      {children}
-    </Providers>
+      <Providers>
+        {children}
+      </Providers>
     </body>
     </html>
   )
