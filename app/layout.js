@@ -12,11 +12,15 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className="dark" suppressHydrationWarning>
-      <body>
-        <Providers>
-          {children}
-        </Providers>
-      </body>
+    <head>
+      <meta name="google-site-verification" content="mqZ8snknrWo8M6eqI6K-EgoJl-YwUefTCShIIRO6nSc"/>
+      <title>Isaacdle - TBOI Wordle</title>
+    </head>
+    <body>
+    <Providers>
+      {children}
+    </Providers>
+    </body>
     </html>
   )
 }
