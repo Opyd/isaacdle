@@ -91,7 +91,7 @@ function App() {
 						</div>
 					</>
 				) : (
-					<div className="container flex flex-col items-center">
+					<div className="flex flex-col items-center xl:container">
 						<div className="flex relative flex-col gap-y-2 justify-center mt-[50px]">
 							<Button className="absolute -right-12 top-0" onClick={resetGuess} variant="ghost" radius="full"
 							        isIconOnly>↺</Button>
